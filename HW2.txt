@@ -1,0 +1,32 @@
+1. 
+
+The information stored needed to maintain and build the boatload puzzle is for the following columns:
+	- Word (type string)
+	- LocX (Location of the first letter on the x axis of type integer)
+	- LocY (Location of the first letter on the y axis of type integer)
+	- Clue (Clue to print next to the puzzle to help solve it of type String)
+	- Length (Length of the word of type integer)
+	- Axis (Axis to print the word)
+	- Id (Number to assign to the word of type integer)
+In my opinion, all a single table filled with the mentioned information is all that is necessary
+for the acutal puzzle. Excluding the Word, Id and Clue columns, all other columns contain all the relevant
+information to construct the grid, since the borders and dimentions can be easily discovered if you find 
+The sum of the maximum sum of the length of the word and location of the word for each axis to determine
+how to construct it as a rectangle. Additionally, you don't need to find out the blank squares inside the
+rectangle since they can be left empty.
+
+2.
+
+The information I believe is not stores in the table is that related to the rectangle, the tables of clues
+and the empty spaces. In order to construct puzzle, only keeping track of the words themselves is enough 
+without having to know where not to put characters or how to limit the size of the puzzle, since that will
+happen naturally just by placing the words on a board. Having to go out of your way to mark the edge of the 
+puzzle and blank out the unused spaces wont change the final board if these steps would have been ignored to
+begin with.
+
+4.
+
+sqlite> create table tb(Word TEXT PRIMARY KEY, Id Integer, LocatioX Integer, LocationY Integer, Length Integer, Clue Text, Axis Text);
+sqlite> INSERT INTO tb (Word, Id, LocationX, LocationY, Length, Clue, Axis) Values ("Example", 1, 0, 0, 7, "Tool to describe", "Y");
+sqlite> SELECT * FROM tb;
+sqlite> .save tb;
